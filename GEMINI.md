@@ -1,0 +1,4 @@
+- This is an Application research platform in which people will be able to explore multiple Applications their alternative features pros cons community support point qualities communities chat communities and much more means this Application will play a key role in making their digital tools research easier and powerful and will help them make better decisions before buying a product
+- the color scheme of this Application will be futuristic with a blend of purple and blue while having purple(voilet) as a dominant color scheme.
+- design philosophy will be minimal.
+- your job here is to make the design consistent and make it look beautiful and responsive and to make the repetitive tasks faster and easier and more.
