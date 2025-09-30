@@ -1,5 +1,5 @@
 import FAQEl from './FAQ.jsx'
-function Post({ data, opened, setOpened, small, highlighted }) {
+function Post({ data, opened, setOpened, small }) {
   console.log("from each post separately: ", data)
   const { name,
     rating,
@@ -24,24 +24,21 @@ function Post({ data, opened, setOpened, small, highlighted }) {
     cons,
     pros,
     cummunities,
-  //  communitySupport,
-  //  pluginsEcoSystem,
+   communitySupport,
+    pluginsEcoSystem,
     Platforms,
-  //  pictures,
-  //  video,
   } = data;
   return (
     <div
       onClick={() => {
         setOpened(data.id)
       }}
-      className={`text-white rounded-3xl layout shadow-lg  transition-all overflow-hidden ${highlighted ? "bg-gray-600 shadow-amber-200":"bg-gray-800"} ${opened ? "col-start-1 max-h-fit row-start-1  top-0 bottom-0 md:col-span-1 lg:col-span-1 h-full" : ""} ${small ? "max-h-fit": ""}`}>
-      <img src={thumbnail} alt={name} className={`w-full object-cover ${small ? "w-24 h-24": ""}`} />
-
-      <div className="p-6">
+      className={`text-white rounded-3xl shadow-lg   transition-all overflow-hidden ${small ? "grid grid-cols-4":""} ${opened ? "col-start-1 max-h-fit row-start-1  top-0 bottom-0 md:col-span-1 lg:col-span-1 h-full" : "hover:shadow-amber-300 cursor-pointer bg-transparent backdrop-blur-2xl"} ${small ? "max-h-fit": ""}`}>
+      <img src={thumbnail} alt={name} className={`w-full object-cover ${small ? " m-auto rounded-2xl cols-span-1": ""}`} />
+      <div className={`p-4 ${small ? "col-span-3":""}`}>
         <h2 className="text-3xl font-bold text-violet-400 mb-2">{name}</h2>
 
-        <p className="text-gray-400 mb-4">{description}</p>
+        <p className={`text-gray-400 mb-4 ${!opened && "line-clamp-2"}`}>{description}</p>
 
         <div className="flex flex-wrap gap-2 mb-4">
           {tags?.map(i => <p className="bg-blue-600 px-3 py-1 rounded-full text-sm">{i}</p>)}
@@ -55,6 +52,8 @@ function Post({ data, opened, setOpened, small, highlighted }) {
             <p><span className="font-bold text-violet-300">Category:</span> {category}</p>
             <p><span className="font-bold text-violet-300">SubCategory:</span> {subCategory}</p>
             <p><span className="font-bold text-violet-300">Country of origin:</span> {COO}</p>
+            <p><span className="font-bold text-violet-300">Community Support:</span> {communitySupport}</p>
+            <p><span className="font-bold text-violet-300">Plugins Ecosystem:</span> {pluginsEcoSystem}</p>
             <div>
               <p className="font-bold text-violet-300">Integrations:</p>
               <div className="flex flex-wrap gap-2 mt-1">

@@ -285,9 +285,21 @@ const data = [
 ]
 
 function App() {
+  const categories = ["Audio Production", "Game Development", "Photography", "Streaming"];
+  const price = ["Free", "Freemium", "One-time purchase", "Subscription"];
+  const rating = ["1", "2", "3", "4", "5"];
+  const easeOfUse = ["Beginner", "Intermediate", "Advanced"];
+  const standard = ["Web", "Desktop", "Mobile"];
+
   return (
     <div className="bg-gray-900 min-h-screen">
-      <Navbar />
+      <Navbar 
+        categories={categories}
+        price={price}
+        rating={rating}
+        easeOfUse={easeOfUse}
+        standard={standard}
+      />
       <div className="container w-full flex m-auto">
         <Posts data={data} />
       </div>
