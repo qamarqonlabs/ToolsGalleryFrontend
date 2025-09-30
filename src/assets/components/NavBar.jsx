@@ -1,6 +1,6 @@
 import {useState} from "react"
 function NavBar({categories, price, rating, easeOfUse, standard}) {
-  const [opened, setOpened] = useState(false)
+  const [opened, setOpened] = useState(true)
   return (
     <nav className="bg-gray-900 bg-opacity-50 backdrop-blur-md p-4 sticky top-0 z-10">
       <div className="container mx-auto flex justify-center items-center">
