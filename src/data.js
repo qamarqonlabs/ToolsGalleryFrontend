@@ -1,8 +1,4 @@
-import Navbar from "./assets/components/NavBar.jsx"
-import Posts from "./assets/components/posts.jsx"
-import "./assets/main.css"
-
-const data = [
+export const data = [
   {
     name: "SynthWave Studio",
     id: '1',
@@ -283,16 +279,3 @@ const data = [
     description: "A user-friendly game engine for creating 2D games across multiple platforms."
   }
 ]
-
-function App() {
-  return (
-    <div className="bg-gray-900 min-h-screen">
-      <Navbar categories={['video-editing', 'photo-editing', 'graphic-designing', 'content-creation']} price={['video-editing', 'photo-editing', 'graphic-designing', 'content-creation']} rating={['video-editing', 'photo-editing', 'graphic-designing', 'content-creation']}  easeOfUse={['video-editing', 'photo-editing', 'graphic-designing', 'content-creation']}  standard={['video-editing', 'photo-editing', 'graphic-designing', 'content-creation']}  />
-      <div className="container w-full flex m-auto">
-        <Posts data={data} />
-      </div>
-    </div>
-  )
-}
-
-export default App
