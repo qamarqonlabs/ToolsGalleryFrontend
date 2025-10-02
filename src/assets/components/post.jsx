@@ -43,7 +43,7 @@ function Post({ data, opened, setOpened, small }) {
         <div className="flex flex-wrap gap-2 mb-4">
           {tags?.map(i => <p className="bg-blue-600 px-3 py-1 rounded-full text-sm">{i}</p>)}
         </div>
-        <div className={`${opened ? 'block' : 'hidden'}`}>
+        <div className={` ${opened ? 'block' : 'hidden'}`}>
           <div className="grid grid-cols-2 gap-4 text-gray-300">
             <p><span className="font-bold text-violet-300">Price:</span> {price}</p>
             <p><span className="font-bold text-violet-300">Rating:</span> {"⭐".repeat(rating)}</p>

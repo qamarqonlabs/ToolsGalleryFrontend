@@ -16,7 +16,7 @@ function FAQEl({ q, a }) {
           </svg>
         </span>
       </div>
-      <div className={`mt-2 text-gray-400 ${opened ? "block" : 'hidden'}`}>
+      <div className={`mt-2 text-gray-400 overflow-hidden transition-all  ${opened ? "h-0" : 'h-fit'}`}>
         <p>{a}</p>
       </div>
     </div>

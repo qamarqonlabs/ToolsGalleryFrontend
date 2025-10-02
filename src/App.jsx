@@ -1,6 +1,10 @@
 import Navbar from "./assets/components/NavBar.jsx"
 import Posts from "./assets/components/posts.jsx"
+import Footer from './assets/components/Footer.jsx'
+import Header from './assets/components/Header.jsx'
+import ToolSubmissionForm from './assets/components/ToolSubmissionForm.jsx'
 import "./assets/main.css"
+import { useState } from "react"
 
 const data = [
   {
@@ -285,11 +289,25 @@ const data = [
 ]
 
 function App() {
+  const [showForm, setShowForm] = useState(false)
   return (
     <div className="bg-gray-900 min-h-screen">
-      <Navbar categories={['video-editing', 'photo-editing', 'graphic-designing', 'content-creation']} price={['video-editing', 'photo-editing', 'graphic-designing', 'content-creation']} rating={['video-editing', 'photo-editing', 'graphic-designing', 'content-creation']}  easeOfUse={['video-editing', 'photo-editing', 'graphic-designing', 'content-creation']}  standard={['video-editing', 'photo-editing', 'graphic-designing', 'content-creation']}  />
-      <div className="container w-full flex m-auto">
-        <Posts data={data} />
+      <div className="container mx-auto text-center">
+        <Navbar categories={['video-editing', 'photo-editing', 'graphic-designing', 'content-creation']} price={['video-editing', 'photo-editing', 'graphic-designing', 'content-creation']} rating={['video-editing', 'photo-editing', 'graphic-designing', 'content-creation']}  easeOfUse={['video-editing', 'photo-editing', 'graphic-designing', 'content-creation']}  standard={['video-editing', 'photo-editing', 'graphic-designing', 'content-creation']}  /> 
+      </div>
+      <div className="container mx-auto text-center">
+       <Header /> 
+      </div>
+      <div className="container mx-auto text-center">
+      </div>
+      <div className="container mx-auto text-center">
+          <div className="container w-full flex m-auto">
+            <Posts data={data} />
+          </div>
+        <button onClick={() => setShowForm(!showForm)} className="my-4 px-4 py-2 bg-violet-600 hover:bg-violet-700 text-white font-bold rounded-lg">{showForm ? 'Hide Form' : 'Submit a Tool'}</button>
+        {showForm && <ToolSubmissionForm />}
+          <Footer />
+         
       </div>
     </div>
   )
