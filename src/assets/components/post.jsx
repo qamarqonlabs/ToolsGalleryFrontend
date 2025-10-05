@@ -33,8 +33,8 @@ function Post({ data, opened, setOpened, small }) {
       onClick={() => {
         setOpened(data.id)
       }}
-      className={`text-white rounded-3xl shadow-lg   transition-all overflow-hidden ${small ? "grid grid-cols-4":""} ${opened ? "col-start-1 max-h-fit row-start-1  top-0 bottom-0 md:col-span-1 lg:col-span-1 h-full" : "hover:shadow-amber-300 cursor-pointer bg-transparent backdrop-blur-2xl"} ${small ? "max-h-fit": ""}`}>
-      <img src={thumbnail} alt={name} className={`w-full object-cover ${small ? " m-auto rounded-2xl cols-span-1": ""}`} />
+      className={`text-white rounded-3xl shadow-lg   transition-all overflow-hidden ${small ? "grid grid-cols-4":""} ${opened ? "col-start-1 bg-gray-800 max-h-fit row-start-1  top-0 bottom-0 md:col-span-1 lg:col-span-1 h-full" : "cursor-pointer mask-b-from-85% bg-gray-800 border-gray-700 border-1 "} ${small ? "max-h-fit": ""}`}>
+      <img src={thumbnail} alt={name} className={`w-full p-2 rounded-3xl object-cover ${small ? " m-auto rounded-2xl cols-span-1": ""}`} />
       <div className={`p-4 ${small ? "col-span-3":""}`}>
         <h2 className="text-3xl font-bold text-violet-400 mb-2">{name}</h2>
 

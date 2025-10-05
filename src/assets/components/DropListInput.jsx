@@ -1,7 +1,14 @@
 import {useState, useEffect, useRef} from 'react'
  function DropListInput({drops, placeHolders, onChange, value}) {
   const inputRef = useRef(null)
+  const dropRef = useRef(null)
   const [placeHolder, setPlaceHolder] = useState(placeHolders[0])
+  const [dropVis, setDropVis] = useState(false)
+  const fireUpdate = () => {
+    console.log("Before update:", dropVis)
+   setDropVis(!dropVis)
+    console.log("after update:", dropVis)
+  }
   useEffect(() => {
     const interval = setInterval(() => {
    if (placeHolder === placeHolders[placeHolders.length -1 ]) {
@@ -16,10 +23,10 @@ import {useState, useEffect, useRef} from 'react'
   })
   return (
   <div className="relative w-full max-w-lg mx-auto">
-    <input ref={inputRef} type="text" onChange={() => {onChange(inputRef.current.value)}} value={value} placeholder={placeHolder} className="w-full px-4 py-2 text-gray-300 bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" />
-      <div className="absolute z-10 w-full mt-1 bg-gray-800 border border-gray-700 rounded-lg shadow-lg">
-        {drops.map(i => <p onClick={() => {inputRef.current.value = i}} className="block px-4 py-2 text-gray-300 cursor-pointer hover:bg-gray-700">{i}</p>)}
-      </div>
+    <input ref={inputRef} type="text" onChange={() => {onChange(inputRef.current.value); setDropVis(true)}} value={value} placeholder={placeHolder} className="w-full px-4 py-2 text-gray-300 bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" />
+      {dropVis && <div ref={dropRef} className="absolute z-10  w-full mt-1 bg-gray-800 border border-gray-700 rounded-lg shadow-lg">
+        {drops.map(i => <p onClick={() => {inputRef.current.value = i; fireUpdate()}} className="block px-4 py-2 text-gray-300 cursor-pointer hover:bg-gray-700">{i}</p>)}
+      </div>}
   </div>
   )
 }

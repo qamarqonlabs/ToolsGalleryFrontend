@@ -11,7 +11,7 @@ export default function ToolSubmissionForm() {
     priceModel: 'One-time purchase',
     category: '',
     subCategory: '',
-    tags: [],
+    tags: "",
     description: '',
     thumbnail: '',
     video: '',
@@ -46,11 +46,12 @@ export default function ToolSubmissionForm() {
   const stockCoo = ['USA', 'UK', 'Japan', 'Germany', 'Canada'];
 
   const handleTagChange = (nq) => {
-    setFormData({ ...formData, tags: nq.split(',').map(tag => tag.trim()) });
+    setFormData({ ...formData, tags: nq });
+    const newTag = nq.toLowerCase().replace(/([a-z]+,)/gm, "").replace(/\s+/gm, "")
+    console.log("newTag ", newTag)
     setTagDrops(
       stockTags.filter(i => {
-        if (i.toLowerCase().includes(nq.toLowerCase().replace(/([a-z]+,[a-z]+,)/gm, "")) && nq !== "") {
-          console.log(nq.toLowerCase().replace(/ [a-z]+, /gm, ""))
+        if (i.toLowerCase().includes(newTag) && nq !== "") {
           return true
         }
       })
@@ -142,10 +143,10 @@ export default function ToolSubmissionForm() {
   };
 
   const renderArrayInputs = (arrayName, fields) => (
-    <div>
+    <div className="flex flex-col">
       <h3 className="text-lg font-semibold text-violet-400 mt-4">{arrayName.charAt(0).toUpperCase() + arrayName.slice(1)}</h3>
       {formData[arrayName].map((item, index) => (
-        <div key={index} className="flex items-center space-x-2 mt-2">
+        <div key={index} className="flex space-x-2 mt-2">
           {fields ? (
             fields.map((field, fieldIndex) => (
               <input
@@ -200,8 +201,8 @@ export default function ToolSubmissionForm() {
             <option>Freemium</option>
             <option>Free</option>
           </select>
-          <DropListInput placeHolders={["Category"]} drops={categoryDrops} onChange={handleCategoryChange} value={formData.category} />
-          <DropListInput placeHolders={["Sub-category"]} drops={subCategoryDrops} onChange={handleSubCategoryChange} value={formData.subCategory} />
+          <DropListInput placeHolders={["Category"]} drops={categoryDrops} onChange={handleCategoryChange} />
+          <DropListInput placeHolders={["Sub-category"]} drops={subCategoryDrops} onChange={handleSubCategoryChange} />
           <input type="text" name="thumbnail" placeholder="Thumbnail URL" value={formData.thumbnail} onChange={handleInputChange} className="w-full px-4 py-2 text-gray-300 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600" />
           <input type="text" name="video" placeholder="Video URL" value={formData.video} onChange={handleInputChange} className="w-full px-4 py-2 text-gray-300 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600" />
           <input type="text" name="communitySupport" placeholder="Community Support" value={formData.communitySupport} onChange={handleInputChange} className="w-full px-4 py-2 text-gray-300 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600" />
@@ -218,7 +219,7 @@ export default function ToolSubmissionForm() {
                 onChange={handleTagChange}
             />
             <div className="flex flex-wrap gap-2 mt-2">
-                {formData.tags.map((tag, index) => (
+                {formData.tags.split(",").map((tag, index) => (
                     <div key={index} className="bg-violet-600 text-white px-3 py-1 rounded-full flex items-center">
                         <span>{tag}</span>
                         <button
